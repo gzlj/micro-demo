@@ -1,8 +1,9 @@
 package main
 
 import (
-	r "github.com/gzlj/micro-demo/cmd/gateway/registry"
-	"github.com/gzlj/micro-demo/cmd/pkg/apigateway/install"
+	"github.com/gzlj/micro-demo/pkg/apigateway/config"
+	"github.com/gzlj/micro-demo/pkg/apigateway/install"
+	r "github.com/gzlj/micro-demo/pkg/apigateway/registry"
 )
 
 func main() {
@@ -10,5 +11,6 @@ func main() {
 	go func() {
 		r.ThisService.Run()
 	}()
-	server.Engine.Run((":8080"))
+
+	server.Engine.Run((":" + config.Port))
 }

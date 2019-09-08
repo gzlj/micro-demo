@@ -2,7 +2,7 @@ package install
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/gzlj/micro-demo/cmd/pkg/apigateway/handler/hello"
+	"github.com/gzlj/micro-demo/pkg/apigateway/handler/hello"
 )
 
 func Server() *ApiServer {

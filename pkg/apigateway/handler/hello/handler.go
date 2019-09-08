@@ -3,8 +3,8 @@ package hello
 import (
 	"context"
 	"github.com/gin-gonic/gin"
-	r "github.com/gzlj/micro-demo/cmd/gateway/registry"
 	"github.com/gzlj/micro-demo/cmd/helloworld/proto"
+	r "github.com/gzlj/micro-demo/pkg/apigateway/registry"
 	"net/http"
 )
 
