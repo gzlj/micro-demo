@@ -6,6 +6,7 @@ import (
 	"github.com/gzlj/micro-demo/cmd/helloworld/proto"
 	"github.com/micro/go-micro"
 	"time"
+	_ "github.com/micro/go-plugins/registry/kubernetes"
 )
 
 func main() {
@@ -21,7 +22,8 @@ func main() {
 		//micro.Registry(reg),
 		micro.Name("helloworld"),
 		micro.RegisterTTL(time.Second*60),
-		micro.RegisterInterval(time.Second*15))
+		micro.RegisterInterval(time.Second*15),
+		)
 	service.Init()
 	proto.RegisterGreeterHandler(service.Server(), new(handlers.Greeter))
 	if err := service.Run(); err != nil {

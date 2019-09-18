@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/gin-gonic/gin"
 	"github.com/gzlj/micro-demo/cmd/helloworld/proto"
-	r "github.com/gzlj/micro-demo/pkg/apigateway/registry"
+	"github.com/micro/go-micro"
 	"net/http"
 )
 
@@ -12,8 +12,8 @@ var (
 	client proto.GreeterService
 )
 
-func init() {
-	client = proto.NewGreeterService("helloworld", r.ThisService.Client())
+func Init(service micro.Service) {
+	client = proto.NewGreeterService("helloworld", service.Client())
 }
 
 func Greet(ctx *gin.Context) {
