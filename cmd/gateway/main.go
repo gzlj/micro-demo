@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gzlj/micro-demo/pkg/apigateway/handler/hello"
+	"github.com/gzlj/micro-demo/pkg/apigateway/handler/manage"
 
 	//r "github.com/gzlj/micro-demo/pkg/apigateway/registry"
 	"github.com/micro/go-micro"
@@ -34,6 +35,7 @@ func main() {
 	)
 	service.Init()
 	hello.Init(service)
+	manage.Service = service
 	if err := service.Run(); err != nil {
 	}
 
@@ -42,6 +44,7 @@ func main() {
 func Router() *gin.Engine{
 	r := gin.Default()
 	r.GET("/hello", hello.Greet)
+	r.GET("/services", manage.ListRegisteredSvcs)
 	return r
 }
 
